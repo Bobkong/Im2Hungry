@@ -3,6 +3,7 @@ package com.example.bobkong.myapplication.router;
 import android.content.Context;
 import android.content.Intent;
 
+import com.example.bobkong.myapplication.ui.LocationActivity;
 import com.example.bobkong.myapplication.ui.LoginActivity;
 import com.example.bobkong.myapplication.ui.MyFavorActivity;
 import com.example.bobkong.myapplication.ui.MyPostActivity;
@@ -20,6 +21,15 @@ public class RouterHelper {
             return;
         }
         Intent intent = new Intent(context, PostActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
+
+    public static void IntentToLocationActivity(Context context) {
+        if (context == null) {
+            return;
+        }
+        Intent intent = new Intent(context, LocationActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }

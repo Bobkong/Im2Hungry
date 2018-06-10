@@ -68,6 +68,7 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     implementation files('libs/open_sdk_r5990_lite.jar')
-    implementation files('libs/TencentLocationSDK_v5.0.1_r251203_170116_1729.jar')
-    implementation files('libs/TencentMapSDK_Raster_v_1.2.8.1.c02ec64.jar')
+    implementation files('libs/AMap3DMap_5.6.0_AMapSearch_5.5.0_AMapLocation_3.6.1_20171128.jar')
+    implementation 'com.github.google:cameraview:3eaeac09a7'
+
 }

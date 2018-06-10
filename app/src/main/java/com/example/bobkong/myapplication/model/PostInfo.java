@@ -23,15 +23,15 @@ public class PostInfo implements Serializable{
     private Bitmap mUserImage;
     private String mCal;
     private String mFoodName;
-    private int mLocLat;
-    private int mLocLng;
+    private double mLocLat;
+    private double mLocLng;
     private String mLocName;
     private String mDescription;
     private String mPostTime;
     private Bitmap mPostImage;
     private int mFavorNum;
 
-    public PostInfo(String mUserName, Bitmap mUserImage, String mCal, String mFoodName, int mLocLat, int mLocLng, String mLocName, String mDescription, String mPostTime, Bitmap mPostImage, int mFavorNum) {
+    public PostInfo(String mUserName, Bitmap mUserImage, String mCal, String mFoodName, double mLocLat, double mLocLng, String mLocName, String mDescription, String mPostTime, Bitmap mPostImage, int mFavorNum) {
         this.mUserName = mUserName;
         this.mUserImage = mUserImage;
         this.mCal = mCal;
@@ -61,11 +61,11 @@ public class PostInfo implements Serializable{
         return mFoodName;
     }
 
-    public int getLocLat() {
+    public double getLocLat() {
         return mLocLat;
     }
 
-    public int getLocLng() {
+    public double getLocLng() {
         return mLocLng;
     }
 

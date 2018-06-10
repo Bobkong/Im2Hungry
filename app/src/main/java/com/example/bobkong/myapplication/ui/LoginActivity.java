@@ -27,7 +27,8 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
          findViewById(R.id.qq_logo).setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 loginMethod.login(LoginActivity.this, null);
+                 //loginMethod.login(LoginActivity.this, null);
+                 RouterHelper.IntentToPostListActivity(LoginActivity.this);
              }
          });
          loginMethod.setmLoginCallback(this);

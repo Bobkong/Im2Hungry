@@ -26,6 +26,7 @@ import com.example.bobkong.myapplication.R;
 import com.example.bobkong.myapplication.app.App;
 import com.example.bobkong.myapplication.model.PostDataManager;
 import com.example.bobkong.myapplication.model.PostInfo;
+import com.example.bobkong.myapplication.router.RouterHelper;
 import com.example.bobkong.myapplication.tools.BitmapCompressTools;
 
 import org.greenrobot.eventbus.EventBus;
@@ -34,6 +35,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.IllegalFormatCodePointException;
 
 /**
  * Created by bobkong on 2018/6/7.
@@ -41,13 +43,17 @@ import java.util.Date;
 
 public class PostActivity extends AppCompatActivity{
     private File mFile;
+    private static final int LOCATION_REQUEST_CODE = 111;
+    private static final int CAMERA_REQUEST_CODE = 123;
     private static final int PERMISSION_CAMERA_CODE = 0;
     private Bitmap picture;
-
+    private double mLat,mLng;
+    private TextView mLocName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
+        mLocName = findViewById(R.id.loc_name);
         mFile = new File(Environment.getDownloadCacheDirectory(),"im2hungry.temp.png");
         findViewById(R.id.post).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +73,14 @@ public class PostActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        findViewById(R.id.choose_location).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PostActivity.this, LocationActivity.class);
+                PostActivity.this.startActivityForResult(intent,LOCATION_REQUEST_CODE);
             }
         });
     }
@@ -102,39 +116,42 @@ public class PostActivity extends AppCompatActivity{
     }
 
     public void addImage(){
-        Intent intent = Intent.createChooser(new Intent(Intent.ACTION_GET_CONTENT)
-                .setType("image/*"),getString(R.string.select_image))
+        /*Intent intent = Intent.createChooser(new Intent(Intent.ACTION_GET_CONTENT)
+                .setType("image*//*"),getString(R.string.select_image))
                 .putExtra(Intent.EXTRA_INITIAL_INTENTS,
                         new Intent[]{
                             new Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                                .putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(mFile))
+                                .putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(mFile)),
                         });
 
-        startActivityForResult(intent, 12345);
+        startActivityForResult(intent, CAMERA_REQUEST_CODE);*/
+        startActivity(new Intent(this,CameraActivity.class));
     }
 
     @Override
     public void onActivityResult(int req, int res, Intent data)
     {
         super.onActivityResult(req, res, data);
-        if (res == RESULT_OK){
-
-            if (data != null && data.getData() != null) {
-                Uri uri = data.getData();
-                // 这里直接decode了图片，没有判断图片大小，没有对可能出现的OOM做处理
-                try {
-                    picture = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                // 显示图片
-                setPostData(picture);
-            }else {
-                Log.d("mmeeeeee","nnnn");
+        if (res == RESULT_OK && data != null){
+            switch (req){
+                case CAMERA_REQUEST_CODE:
+                    Uri uri = data.getData();
+                    // 这里直接decode了图片，没有判断图片大小，没有对可能出现的OOM做处理
+                    try {
+                        picture = BitmapFactory.decodeStream(getContentResolver().openInputStream(uri));
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    // 显示图片
+                    setPostData(picture);
+                break;
+                case LOCATION_REQUEST_CODE:
+                    mLocName.setText(data.getStringExtra("select_location"));
+                    mLat = data.getDoubleExtra("select_lat",0);
+                    mLng = data.getDoubleExtra("select_lng",0);
             }
+
         }
-
-
     }
 
     private void setPostData(Bitmap picture) {
@@ -150,7 +167,7 @@ public class PostActivity extends AppCompatActivity{
     }
 
     private void postNewData() {
-        PostInfo postInfo = new PostInfo("bobkong", BitmapFactory.decodeResource(this.getResources(), R.mipmap.userimage),"1000cal/100g","香蕉",0,0,
+        PostInfo postInfo = new PostInfo("bobkong", BitmapFactory.decodeResource(this.getResources(), R.mipmap.userimage),"1000cal/100g","香蕉",mLat,mLng,
                 "腾讯大厦",((EditText)findViewById(R.id.description)).getText().toString(),getCurrentTime(),picture,0);
 
         Log.d("Image", "Image: " + picture.getWidth() + "   " + picture.getHeight());

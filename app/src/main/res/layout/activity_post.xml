@@ -14,7 +14,7 @@
             android:id="@+id/back"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@mipmap/back"
+            android:src="@mipmap/gray_back"
             android:layout_marginStart="12dp"/>
 
         <TextView
@@ -83,6 +83,7 @@
             android:layout_gravity="start|center_vertical"/>
 
         <TextView
+            android:id="@+id/loc_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/choose_loc_hint"

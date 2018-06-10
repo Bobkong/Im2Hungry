@@ -38,8 +38,8 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"  >
 
         <meta-data
-            android:name="TencentMapSDK"
-            android:value="4P7BZ-XR2EQ-I5W5S-GWK4K-AKZHQ-QLBVJ" />
+            android:name="com.amap.api.v2.apikey"
+            android:value="590eb8ad25d0e22e51c0769d718bda58"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -64,6 +64,8 @@
         <activity android:name=".ui.PostActivity"/>
         <activity android:name=".ui.MyFavorActivity"/>
         <activity android:name=".ui.MyPostActivity"/>
+        <activity android:name=".ui.LocationActivity"/>
+        <activity android:name=".ui.CameraActivity"/>
 
         <activity
             android:name="com.tencent.tauth.AuthActivity"
