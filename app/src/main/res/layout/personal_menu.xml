@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_layout"
+    android:layout_width="240dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:background="#ffffff">
+
+    <View
+        android:id="@+id/divider_footer"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignTop="@+id/footer"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="23dp"
+        android:background="@color/line_color"
+        android:visibility="visible"/>
+
+    <LinearLayout
+        android:id="@+id/ll_user_info"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:orientation="horizontal">
+
+        <com.example.bobkong.myapplication.widgets.CircleImageView
+            android:id="@+id/user_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/userimage"
+            app:border_width="0dp"
+            app:border_color="@color/title_black"
+            android:layout_marginTop="80dp"
+            android:layout_marginStart="20dp"/>
+
+        <TextView
+            android:id="@+id/user_name"
+            android:textSize="28sp"
+            android:textColor="@color/title_black"
+            android:text="@string/user_name_example"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:layout_marginStart="12dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_user_info"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:src="@mipmap/ic_favor"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center_vertical"/>
+            <TextView
+                android:id="@+id/my_favor"
+                android:text="@string/my_favor"
+                android:textColor="@color/title_black"
+                android:textSize="18sp"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="28dp">
+
+                <ImageView
+                    android:src="@mipmap/ic_producer"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="center_vertical"/>
+                <TextView
+                    android:id="@+id/introduce_producer"
+                    android:text="@string/introduce_producer"
+                    android:textColor="@color/title_black"
+                    android:textSize="18sp"
+                    android:layout_marginStart="16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+
+        <LinearLayout
+            android:id="@+id/more_bottombtn_login_layout"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_marginStart="20dp">
+
+            <ImageView
+                android:id="@+id/more_bottom_login_icon"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="3dp"
+                android:layout_toLeftOf="@+id/more_bottom_login_info"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_exit"/>
+
+            <TextView
+                android:id="@+id/more_bottom_login_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:layout_gravity="center_vertical"
+                android:text="@string/logout_title"
+                android:textColor="@color/title_black"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
