@@ -20,7 +20,8 @@
     <LinearLayout
         android:id="@+id/ll_user_info"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="80dp"
         android:orientation="horizontal">
 
         <com.example.bobkong.myapplication.widgets.CircleImageView
@@ -30,19 +31,18 @@
             android:src="@mipmap/userimage"
             app:border_width="0dp"
             app:border_color="@color/title_black"
-            android:layout_marginTop="80dp"
             android:layout_marginStart="20dp"/>
 
         <TextView
             android:id="@+id/user_name"
-            android:textSize="28sp"
+            android:textSize="20sp"
             android:textColor="@color/title_black"
             android:text="@string/user_name_example"
             android:gravity="center_vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:layout_marginStart="12dp"/>
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -52,6 +52,7 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/my_favor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -63,7 +64,6 @@
                 android:layout_height="20dp"
                 android:layout_gravity="center_vertical"/>
             <TextView
-                android:id="@+id/my_favor"
                 android:text="@string/my_favor"
                 android:textColor="@color/title_black"
                 android:textSize="18sp"
@@ -73,6 +73,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/introduce_producer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -85,7 +86,6 @@
                     android:layout_height="22dp"
                     android:layout_gravity="center_vertical"/>
                 <TextView
-                    android:id="@+id/introduce_producer"
                     android:text="@string/introduce_producer"
                     android:textColor="@color/title_black"
                     android:textSize="18sp"
@@ -105,14 +105,13 @@
 
 
         <LinearLayout
-            android:id="@+id/more_bottombtn_login_layout"
+            android:id="@+id/log_out"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:layout_marginStart="20dp">
 
             <ImageView
-                android:id="@+id/more_bottom_login_icon"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:layout_gravity="center_vertical"
@@ -122,7 +121,6 @@
                 android:src="@mipmap/ic_exit"/>
 
             <TextView
-                android:id="@+id/more_bottom_login_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"

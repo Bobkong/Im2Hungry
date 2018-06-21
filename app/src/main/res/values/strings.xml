@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Im2Hungry</string>
-    <string name="user_name_example">bobkong</string>
+    <string name="user_name_example">我爱学习学习使我快乐</string>
     <string name="post_time_example">11:43</string>
     <string name="post_distance_example">103m</string>
     <string name="post_location_example">腾讯大厦</string>
@@ -16,10 +16,15 @@
     <string name="food_name_hint">食物名称:</string>
     <string name="cal_hint">卡路里：</string>
     <string name="set_title">设置</string>
-    <string name="logout_title">退出登录</string>
-    <string name="my_favor">我的收藏</string>
+    <string name="logout_title">退出</string>
     <string name="introduce_producer">开发者介绍</string>
     <string name="favor_hint">收藏</string>
     <string name="personal_hint">个人中心</string>
     <string name="select_image">选择图片</string>
+    <string name="my_post">我的发布</string>
+    <string name="my_favor">我的收藏</string>
+    <string name="correct_food_name">手动输入</string>
+    <string name="verify_take_pic">请拍摄食物照片哦...</string>
+    <string name="verify_choos_loc">请选择位置哦...</string>
+    <string name="post_detail">动态详情</string>
 </resources>

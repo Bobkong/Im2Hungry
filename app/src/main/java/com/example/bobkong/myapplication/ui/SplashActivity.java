@@ -38,6 +38,7 @@ public class SplashActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         RouterHelper.IntentToLoginAcitivty(SplashActivity.this);
+                        finish();
                     }
                 },4000L);
 

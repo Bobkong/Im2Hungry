@@ -28,6 +28,9 @@
     <!-- 访问手机当前状态, 需要某些信息用于网络定位 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
+
+
+
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -65,8 +68,8 @@
         <activity android:name=".ui.MyFavorActivity"/>
         <activity android:name=".ui.MyPostActivity"/>
         <activity android:name=".ui.LocationActivity"/>
-        <activity android:name=".ui.CameraActivity"/>
-
+        <activity android:name=".ui.PostDetailActivity"/>
+        <activity android:name=".ui.LocationSeeActivity"/>
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:noHistory="true"
@@ -75,7 +78,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="tencent222222" />
+                <data android:scheme="tencent101484370" />
             </intent-filter>
         </activity>
         <activity
@@ -84,8 +87,9 @@
             android:screenOrientation="behind"
 
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".ui.DeveloperActivity" />
 
-
+        <service android:name="com.amap.api.location.APSService"/>
     </application>
 
 </manifest>

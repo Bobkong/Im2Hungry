@@ -1,59 +1,125 @@
 package com.example.bobkong.myapplication.model;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 
-import com.litesuits.orm.LiteOrm;
-import com.litesuits.orm.db.annotation.PrimaryKey;
-import com.litesuits.orm.db.annotation.Table;
-import com.litesuits.orm.db.assit.QueryBuilder;
+import com.example.bobkong.myapplication.net.model.User;
+import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by bobkong on 2018/6/7.
  */
-@Table("post_info")
 public class PostInfo implements Serializable{
-    @PrimaryKey(PrimaryKey.AssignType.BY_MYSELF)
+    @SerializedName("post_id")
     private String postId;
-    private String mUserName;
-    private Bitmap mUserImage;
-    private String mCal;
+    @SerializedName("user")
+    private User mUser;
+
+    @SerializedName("food_cal")
+    private int mCal;
+    @SerializedName("food_name")
     private String mFoodName;
+    @SerializedName("loc_lat")
     private double mLocLat;
+    @SerializedName("loc_lng")
     private double mLocLng;
+    @SerializedName("loc_name")
     private String mLocName;
+    @SerializedName("description")
     private String mDescription;
+    @SerializedName("post_time")
     private String mPostTime;
-    private Bitmap mPostImage;
+    @SerializedName("pic_url")
+    private String mPostImageUrl;
+
+    @SerializedName("favored")
+    private boolean mFavored;
+    @SerializedName("favoriteCount")
     private int mFavorNum;
 
-    public PostInfo(String mUserName, Bitmap mUserImage, String mCal, String mFoodName, double mLocLat, double mLocLng, String mLocName, String mDescription, String mPostTime, Bitmap mPostImage, int mFavorNum) {
-        this.mUserName = mUserName;
-        this.mUserImage = mUserImage;
+    public boolean isFavored() {
+        return mFavored;
+    }
+
+    public void setFavored(boolean favored) {
+        mFavored = favored;
+    }
+
+
+    public PostInfo(User user, int mCal, String mFoodName, double mLocLat, double mLocLng, String mLocName, String mDescription, String mPostTime, String mPostImageUrl, int mFavorNum) {
         this.mCal = mCal;
+        mUser = user;
         this.mFoodName = mFoodName;
         this.mLocLat = mLocLat;
         this.mLocLng = mLocLng;
         this.mLocName = mLocName;
         this.mDescription = mDescription;
         this.mPostTime = mPostTime;
-        this.mPostImage = mPostImage;
+        this.mPostImageUrl = mPostImageUrl;
         this.mFavorNum = mFavorNum;
     }
 
+    public PostInfo() {
+    }
+
+    public String getPostId() {
+        return postId;
+    }
+
+    public void setPostId(String postId) {
+        this.postId = postId;
+    }
+
+    public User getUser() {
+        return mUser;
+    }
+
+    public void setUser(User user) {
+        mUser = user;
+    }
+
+    public void setCal(int cal) {
+        mCal = cal;
+    }
+
+    public void setFoodName(String foodName) {
+        mFoodName = foodName;
+    }
+
+    public void setLocLat(double locLat) {
+        mLocLat = locLat;
+    }
+
+    public void setLocLng(double locLng) {
+        mLocLng = locLng;
+    }
+
+    public void setLocName(String locName) {
+        mLocName = locName;
+    }
+
+    public void setDescription(String description) {
+        mDescription = description;
+    }
+
+    public void setPostTime(String postTime) {
+        mPostTime = postTime;
+    }
+
+    public void setFavorNum(int favorNum) {
+        mFavorNum = favorNum;
+    }
+
     public String getUserName() {
-        return mUserName;
+        return mUser.getUserName();
     }
 
-    public Bitmap getUserImage() {
-        return mUserImage;
+    public String getUserImage() {
+        return mUser.getUserImg();
     }
 
-    public String getCal() {
+    public int getCal() {
         return mCal;
     }
 
@@ -81,36 +147,15 @@ public class PostInfo implements Serializable{
         return mPostTime;
     }
 
-    public Bitmap getPostImage() {
-        return mPostImage;
+    public String getPostImageUrl() {
+        return mPostImageUrl;
     }
 
     public int getFavorNum() {
         return mFavorNum;
     }
 
-    public void setPostImage(Bitmap picture){
-        this.mPostImage = picture;
-    }
-    public static void addToFavor(Context context,PostInfo postInfo){
-        if (context == null || postInfo == null){
-            return;
-        }
-        DBManager.getInstance(context).save(postInfo);
-    }
-
-    public static List<PostInfo> queryAllFavors(Context context){
-        if (context == null){
-            return new ArrayList<>();
-        }
-        return DBManager.getInstance(context)
-                .query(new QueryBuilder(PostInfo.class));
-    }
-
-    public static void delete(Context context,PostInfo postInfo){
-        if (context == null || postInfo == null){
-            return;
-        }
-        DBManager.getInstance(context).delete(postInfo);
+    public void setPostImageUrl(String picture){
+        this.mPostImageUrl = picture;
     }
 }

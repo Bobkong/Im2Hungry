@@ -11,6 +11,8 @@ import com.example.bobkong.myapplication.R;
 import com.example.bobkong.myapplication.model.PostDataManager;
 import com.example.bobkong.myapplication.model.PostInfo;
 
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -20,29 +22,46 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class PostAdapter extends BaseAdapter {
 
-    List<PostInfo> mDatas = new CopyOnWriteArrayList<>();
+    List<PostInfo> mDatas = new ArrayList<>();
     LayoutInflater mInflater;
+    Context mContext;
 
     public PostAdapter(Context context) {
+        if (context == null) {
+            return;
+        }
+        mContext = context;
         mInflater = LayoutInflater.from(context);
-        mDatas = PostDataManager.getInstance(context).getPostDataList();
+    }
+
+    public List<PostInfo> getDatas() {
+        return mDatas;
+    }
+
+    public void setDatas(List<PostInfo> datas) {
+        mDatas = datas;
+        notifyDataSetChanged();
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
-        if (position < 0 || position >= mDatas.size()){
+    public View getView(int position, View convertView, ViewGroup parent) {
+        if (position < 0 || position >= mDatas.size()) {
             return null;
         }
         PostViewHolder postViewHolder;
-        if (convertView != null){
-           postViewHolder = (PostViewHolder)convertView.getTag();
-        }else {
-            convertView = mInflater.inflate(R.layout.post_item,null);
-            postViewHolder = new PostViewHolder(convertView);
+        if (convertView != null) {
+            postViewHolder = (PostViewHolder) convertView.getTag();
+        } else {
+            convertView = mInflater.inflate(R.layout.post_item, null);
+            postViewHolder = new PostViewHolder(convertView, mContext);
             convertView.setTag(postViewHolder);
         }
 
-        postViewHolder.PaintView(mDatas.get(position));
+        try {
+            postViewHolder.PaintView(mDatas.get(position));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return convertView;
     }
 
@@ -63,8 +82,4 @@ public class PostAdapter extends BaseAdapter {
         return hashCode;
     }
 
-    public void refreshList(Context context) {
-        mDatas = PostDataManager.getInstance(context).getPostDataList();
-        this.notifyDataSetChanged();
-    }
 }

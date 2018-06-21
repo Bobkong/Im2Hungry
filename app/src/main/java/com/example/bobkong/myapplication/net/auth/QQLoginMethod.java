@@ -21,7 +21,7 @@ public class QQLoginMethod{
 
     private Context mContext;
 
-    private String mAppid = "222222";
+    private String mAppid = "101484370";
     private Tencent mTencent;
     private UserInfo mUserInfo;
     private QQLoginListener mQQLoginListener;

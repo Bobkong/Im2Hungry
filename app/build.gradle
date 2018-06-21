@@ -61,14 +61,20 @@ dependencies {
     compile 'com.jaren:likeview:1.0.0'
     //okhttp
     compile 'com.squareup.okhttp3:okhttp:3.6.0'
+    compile 'com.squareup.okhttp3:okhttp-urlconnection:3.6.0'
     //retrofit
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     //rxjava
     compile 'io.reactivex:rxjava:1.1.7'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    //Gson
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    compile 'com.google.code.gson:gson:2.8.0'
+
     implementation files('libs/open_sdk_r5990_lite.jar')
     implementation files('libs/AMap3DMap_5.6.0_AMapSearch_5.5.0_AMapLocation_3.6.1_20171128.jar')
-    implementation 'com.github.google:cameraview:3eaeac09a7'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
 
 }

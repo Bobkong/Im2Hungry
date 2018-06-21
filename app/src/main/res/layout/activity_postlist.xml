@@ -23,8 +23,10 @@
 
 
 
-            <ImageView
-                android:src="@mipmap/ic_name"
+            <TextView
+                android:text="附近动态"
+                android:textSize="22sp"
+                android:textColor="@color/colorPrimary"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_width="0dp"

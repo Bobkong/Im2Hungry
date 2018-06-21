@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.bobkong.myapplication.ui.PostListActivity">
+    android:background="@color/title_white"
+    tools:context="com.example.bobkong.myapplication.ui.MyPostActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -14,7 +15,7 @@
         android:background="@color/title_white">
 
         <ImageView
-            android:id="@+id/post"
+            android:id="@+id/back"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@mipmap/gray_back"
@@ -23,7 +24,7 @@
 
         <TextView
             android:textSize="22sp"
-            android:textColor="#515151"
+            android:textColor="@color/colorPrimary"
             android:text="@string/personal_hint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -73,11 +74,33 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2.5dp"
-        android:background="#efefef"
+        android:layout_height="2dp"
+        android:background="#E8ECED"
         android:layout_marginTop="16dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         />
+
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/navigation_tab"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabTextColor="@android:color/black"
+        app:tabSelectedTextColor="@color/colorPrimary"
+        app:tabMaxWidth="0dp"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        app:tabTextAppearance="@style/MyTabLayoutTextSize"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"/>
 
 </LinearLayout>

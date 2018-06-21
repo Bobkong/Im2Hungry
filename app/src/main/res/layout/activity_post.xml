@@ -113,13 +113,23 @@
 
         <TextView
             android:id="@+id/food_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="@string/food_name_hint"
             android:textColor="@color/title_black"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="16dp"
             android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/correct_food_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="8dp"
+            android:textColor="@color/title_black"
+            android:text="@string/correct_food_name"/>
 
     </LinearLayout>
 
